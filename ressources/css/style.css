@@ -1,0 +1,104 @@
+﻿body {
+background-color: #fbfff0 ;
+}
+
+.h4col , .h5coldes {
+text-align: center;
+}
+
+
+.h1head {
+font-size:300%; 
+color:Crimson; 
+font-family:Arial
+}
+
+.h2head {
+color:Gray; 
+font-family:Georgia
+}
+
+.hrhead {
+display: block;
+margin-top: 0px;
+margin-bottom: 0px;
+margin-left: auto;
+margin-right: auto;
+border-style: inset;
+border-width: 1.5px;
+background-color:#0099ff;
+}
+
+
+/* Cacher le bouton en haut à droite stream it  : https://discuss.streamlit.io/t/how-do-i-hide-remove-the-menu-in-production/362/20 */
+.stApp [data-testid="stToolbar"], footer{
+    visibility: hidden;
+}
+
+
+/* Suppression des marges par défaut */
+div.block-container {padding-top:1rem;}
+
+/*Client */
+.titrecli {
+color:Crimson;background-color:#DEC7CB;border-radius:10px 0 0 0;text-align:center;font-size: 1.2em;
+font-family:Georgia;padding: 10px 0px 0px 0px;font-weight : bold;margin-top:10px;
+}
+.titrescore {
+color:Crimson;background-color:#DEC7CB;border-radius:10px 0 0 0;text-align:center;font-size: 1.2em;
+font-family:Georgia;padding: 10px 0 0 0;font-weight : bold; margin: 0px 0 0 0;
+}
+
+#cap {
+caption-side: top;
+}
+.cadrelegende{
+background-color:#E1F5FE;
+border:1px dashed;
+width:280px;
+height:150px;
+margin:2px;
+border-radius: 10px;
+}
+
+#cap  td , #cap  tr {
+color:#607D8B;
+border : none;
+padding:0px 0px 0px 1px;
+}
+.legende{
+  height:2px;
+  width:50px;
+  margin:0px;
+}
+
+/*
+div.stButton > button:first-child {
+    background-color: #0099ff;
+    color:#ffffff;
+}
+div.stButton > button:hover {
+    background-color: #00ff00;
+    color:#ff0000;
+    }
+*/
+
+[data-testid="stSidebarNav"] {
+                background-image: url(https://user.oc-static.com/upload/2019/02/25/15510866018677_logo%20projet%20fintech.png);
+                background-repeat: no-repeat;
+                padding-top: 120px;
+                background-position: 20px 20px;
+                background-size: 150px;
+            }
+            [data-testid="stSidebarNav"]::before {
+                content: "--------------------------";
+                margin-left: 20px;
+                margin-top: 20px;
+                font-size: 30px;
+                position: relative;
+                top: 20px;
+            }
+
+div[data-baseweb="select"] > div {
+    background-color: chartreuse;
+}
