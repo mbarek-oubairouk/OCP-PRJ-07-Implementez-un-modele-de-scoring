@@ -136,7 +136,7 @@ else:
     y_proba = best_model.predict_proba(data_predict)[:, 1]
     # Score du client en pourcentage arrondi et nombre entier
     y_proba_defaut_client = int(np.rint(y_proba * 100))
-st.markdown(f'model_used={model_used}')
+
 # ============== Score moyen des 10 plus proches voisins du test set en pourcentage =============
 
 # Score moyen des 10 plus proches voisins du test set en pourcentage
