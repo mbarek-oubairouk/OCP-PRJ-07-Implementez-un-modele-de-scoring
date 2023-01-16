@@ -41,11 +41,11 @@ div.block-container {padding-top:1rem;}
 
 /*Client */
 .titrecli {
-color:Crimson;background-color:#DEC7CB;border-radius:10px 0 0 0;text-align:center;font-size: 1.2em;
+color:#F5674F;background-color:#B3E5FC;border-radius:10px 0 0 0;text-align:center;font-size: 1.3em;
 font-family:Georgia;padding: 10px 0px 0px 0px;font-weight : bold;margin-top:10px;
 }
 .titrescore {
-color:Crimson;background-color:#DEC7CB;border-radius:10px 0 0 0;text-align:center;font-size: 1.2em;
+color:Crimson;background-color:#B3E5FC;border-radius:10px 0 0 0;text-align:center;font-size: 1.3em;
 font-family:Georgia;padding: 10px 0 0 0;font-weight : bold; margin: 0px 0 0 0;
 }
 
