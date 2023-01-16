@@ -2,11 +2,10 @@
 """Application : Dashboard de Crédit Score
 
 Auteur: Oubairouk Mbarek 
-Source: https://github.com/loedata/P7-DASHBOARD
 Local URL: http://localhost:8501
 Lancement en local depuis une console anaconda prompt : 
     cd vers_repertoire du fichier dashboard_streamlit.py
-    streamlit run dashboard_streamlit.py
+    streamlit run homepage.py
 Arrêt dans la console anaconda-prompt
 """
 
@@ -24,61 +23,66 @@ import streamlit as st
 #import utilitaire.load_env as env
 from utilitaire.load_env import * 
 
-st.set_page_config(page_title="Prêt à dépenser - Dashboard", page_icon="", layout="wide")
+st.set_page_config(page_title="Prêt à dépenser - Dashboard: conçu pour les chargés de relations clients.", 
+page_icon="💰", layout="wide")
 
-# ====================================================================
-# HEADER - TITRE
-# ====================================================================
-html_header="""
-    <head>
-        <title>Application Dashboard Crédit Score</title>
-        <meta charset="utf-8">
-        <meta name="keywords" content="Home Crédit Group, Dashboard, prêt, crédit score">
-        <meta name="description" content="Application de Crédit Score - dashboard">
-        <meta name="author" content="Oubairouk Mbarek">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-               <!-- Bootstrap CSS -->
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    </head>             
-    <h1 class="h1head"> Prêt à dépenser <br>
-        <h2 class="h2head"> DASHBOARD</h2>
-        <hr class ="hrhead" />
-     </h1>
-"""
-
-st.markdown(html_header, unsafe_allow_html=True)
-
+update_menu()
+menu_style()
+header_style()
 #st.markdown('<style>div[class="css-6qob1r e1fqkh3o3"] {color:black; font-weight: 900; ;background-repeat: no-repeat;background-size:350%;} </style>', unsafe_allow_html=True)
 
+
+# Description du projet
+
+# espace entre les tabs
 st.markdown("""
-    <style>
-    div[data-testid="stSidebarNav"] {
-        border-radius: 0.5rem;
-        border: 1px solid lightgrey;
-        background-color: rgba(151, 250, 195, 0.15);
-    }
-    div[data-testid="stSidebarNav"] >{
-            margin-right: 10px;
-            background-color:green;
-            margin: 3px;
-        }
-
-    </style>
-    """, unsafe_allow_html=True)
-
-	
-pages = st.source_util.get_pages("homepage.py")
-new_page_names = {
-  'homepage': "🏡 Page d'acceuil",
-  'score': '🥇 Score du client',
-  'profil': '📊 profil du client',
-  'plot': '📊 plot'
+<style>
+button[data-baseweb="tab"] > div[data-testid="stMarkdownContainer"] >p{
+  font-size: 18px;
+  background-color:  rgba(245, 174, 79, 0.15); /*Green #4CAF50; */
+  border: none;
+  color: #F56C4F;
+  padding: 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 20px;
+}
+button[data-baseweb="tab"] > div[data-testid="stMarkdownContainer"] {
+        /*border: 1px solid lightgrey;
+        background-color: #F9DC44;*/
+        border-radius: 12px;
 }
 
-#st.markdown(pages.values())
-for key, page in pages.items():
-  if page['page_name'] in new_page_names:
-    page['page_name'] = new_page_names[page['page_name']]
+</style>
+""", unsafe_allow_html=True)
+
+tab1, tab2, tab3 = st.tabs(['🥇 Score du client','👨‍👩‍👧‍👦 Profil du client','🤔 Interprétation du modèle'])
+with tab1:
+   st.markdown("""
+            <span style="font-size: 25px;">👈</span> En cliquant sur le menu à droite **Score du client**, vous pourrez découvrir le score estimé que le client a obtenu pour sa demande de prêt.<br>
+
+Vous y trouverez aussi une explication intelligible de la manière dont il a été calculé.<br>
+Ce score représente la probabité de défaut du client pour rembourser son crédit.<br>
+
+Ce score est calculé à l'aide d'un modèle de prédiction appliqué à un ensemble de **307 511 clients** dont on connaît déjà la probablité de défaut.<br>
+Cette procédure permet de confronter les résultats du modèle de prédiction à la réalité et donc de **valider l'efficacité du modèle de prédiction**.
+            """, unsafe_allow_html=True)
+
+with tab2:
+   st.markdown("""
+<span style="font-size: 25px;">👈</span> Sur la page **Profil du client**, vous trouverez une comparaison des informations descriptives de votre client à un groupe de clients similaires.
+            """, unsafe_allow_html=True)
+
+with tab3:
+   st.markdown("""
+           <span style="font-size: 25px;">👈</span> Enfin, sur la page **Interprétation du modèle**, vous trouverez une interprétation globale du modèle de prédiction.
+            """, unsafe_allow_html=True)
+
+
+
 # Chargement du fichier css
 # ====================================================================
 
@@ -101,4 +105,5 @@ with st.spinner('Changement de données'):
 
 for df in LIST_DF:
     st.session_state[df]=eval(df)
-st.session_state['home'] = True
+st.session_state['page-home'] = True
+

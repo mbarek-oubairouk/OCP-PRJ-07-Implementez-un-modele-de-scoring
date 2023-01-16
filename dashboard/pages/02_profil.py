@@ -25,22 +25,8 @@ warnings.filterwarnings('ignore')
 # ====================================================================
 # HEADER - TITRE
 # ====================================================================
-html_header="""
-    <head>
-        <title>Application Dashboard Crédit Score</title>
-        <meta charset="utf-8">
-        <meta name="keywords" content="Home Crédit Group, Dashboard, prêt, crédit score">
-        <meta name="description" content="Application de Crédit Score - dashboard">
-        <meta name="author" content="Oubairouk Mbarek">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-               <!-- Bootstrap CSS -->
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    </head>             
-    <h1 class="h1head"> Prêt à dépenser <br>
-        <h2 class="h2head"> DASHBOARD</h2>
-        <hr class ="hrhead" />
-     </h1>
-"""
+menu_style()
+header_style()
 
 html_legende = """
 
@@ -75,7 +61,6 @@ html_legende = """
 </div>
 """
 
-st.markdown(html_header, unsafe_allow_html=True)
 st.markdown('<style>body{background-color: #fbfff0}</style>',unsafe_allow_html=True)
 
 # ====================================================================
@@ -95,11 +80,15 @@ needed_df = ['df_info_voisins','df_pret_voisins','df_dashboard',
              'df_voisin_train_agg','df_all_train_agg','df_client_courant',
              'client_info','client_pret']
 
+if 'page-score'  not in st.session_state:
+    st.error("Vous devez cliquer d'abord sur le menu '🥇 Score du client'")
+    st.stop()
 
 for df in needed_df:
     if df in st.session_state:
         #st.markdown(f"{df}:reloand ok", unsafe_allow_html=True)
         globals()[df] = st.session_state[df]
+
 
 #st.markdown(df_client_courant.columns, unsafe_allow_html=True)
 # --------------------------------------------------------------------
@@ -110,27 +99,16 @@ def infos_clients_similaires():
             - traits stricts.
             - demande de prêt
     '''
-    html_clients_similaires = """
-        <div class="card">
-            <div class="card-body" style="border-radius: 10px 10px 0px 0px;
-                  background: #DEC7CB; padding-top: 5px; width: auto;
-                  height: 40px;">
-                  <h3 class="card-title" style="background-color:#DEC7CB; color:Crimson;
-                      font-family:Georgia; text-align: center; padding: 0px 0;">
-                      Clients similaires
-                  </h3>
-            </div>
-        </div>
-        """
+    html_clients_similaires = """ <h3 class="titrecli" > {tag}</h3>"""
 
     # titre = True
 
     # ====================== GRAPHIQUES COMPARANT CLIENT COURANT / CLIENTS SIMILAIRES ===========================
-    chkComparGraphe = st.sidebar.checkbox("Voir graphiques comparatifs ?")
+    chkComparGraphe = st.sidebar.checkbox("Similarité graphique?")
     if chkComparGraphe:
 
         # if titre:
-        st.markdown(html_clients_similaires, unsafe_allow_html=True)
+        st.markdown(html_clients_similaires.format(tag="Similarité graphique"), unsafe_allow_html=True)
             # titre = False
 
         with st.spinner('**Affiche les graphiques comparant le client courant et les clients similaires...**'):
@@ -372,12 +350,12 @@ def infos_clients_similaires():
 
                                     
     # ====================== COMPARAISON TRAITS STRICTS CLIENT COURANT / CLIENTS SIMILAIRES ============================
-    if st.sidebar.checkbox("Comparer traits stricts ?"):     
-        st.markdown(html_clients_similaires, unsafe_allow_html=True)
+    if st.sidebar.checkbox("Similarité socio-démographiques ?"):     
+        st.markdown(html_clients_similaires.format(tag="Comparaison socio-démographiques"), unsafe_allow_html=True) 
             
         with st.spinner('**Affiche les traits stricts comparant le client courant et les clients similaires...**'):                 
                                           
-            with st.expander('Comparaison traits stricts',
+            with st.expander('Similarité socio-démographiques',
                              expanded=True):
                     # Infos principales clients similaires
                     voisins_info = df_info_voisins[df_info_voisins['ID_CLIENT'] == client_id].iloc[:, 1:]
@@ -390,9 +368,9 @@ def infos_clients_similaires():
                     st.dataframe(voisins_info.style.highlight_max(axis=0))
             
     # ====================== COMPARAISON DEMANDE DE PRÊT CLIENT COURANT / CLIENTS SIMILAIRES ============================
-    if st.sidebar.checkbox("Comparer demande prêt ?"):     
+    if st.sidebar.checkbox("Similarité demande prêt ?"):     
 
-        st.markdown(html_clients_similaires, unsafe_allow_html=True)
+        st.markdown(html_clients_similaires.format(tag="Similarité demande prêt"), unsafe_allow_html=True)
 
         with st.spinner('**Affiche les informations de la demande de prêt comparant le client courant et les clients similaires...**'):                 
 
@@ -408,3 +386,4 @@ def infos_clients_similaires():
 					
 st.sidebar.subheader('Clients similaires')
 infos_clients_similaires()
+st.session_state['page-profil'] = True
