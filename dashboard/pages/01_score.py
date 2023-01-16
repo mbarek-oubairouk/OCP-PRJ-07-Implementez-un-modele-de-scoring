@@ -54,7 +54,7 @@ def update_resum():
     with gd.container():
         ex=update_pred(list_history)
         st.markdown(ex, unsafe_allow_html=True)
-        with st.expander("👇",expanded=False):
+        with st.expander("👉",expanded=False):
             st.dataframe(pd.DataFrame(list_history,columns=['id','status','score','date']))
 
 if 'histo' in st.session_state:
