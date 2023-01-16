@@ -41,7 +41,7 @@ local_css(FILE_CSS)
 needed_vars = ['client_id','score','best_model','test_set','shap_values']
 
 if 'page-profil'  not in st.session_state:
-    st.error("Vous devez cliquer d'abord sur le menu '📊 profil du client'")
+    st.error("Vous devez cliquer d'abord sur le menu '👨‍👩‍👧‍👦 profil du client'")
     st.stop()
 
 
