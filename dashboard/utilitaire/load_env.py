@@ -226,7 +226,7 @@ def update_menu():
       'homepage': "🏦 Page d'acceuil",
       'score': '🥇 Score du client',
       'profil': '👨‍👩‍👧‍👦 Profil du client',
-      'interpretation': '🤔 Interprétation'
+      'interpretation': '🤔 Interprétation du modèle'
       }
 
     #st.markdown(pages.values())
