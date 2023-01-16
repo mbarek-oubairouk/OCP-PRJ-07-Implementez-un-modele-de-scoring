@@ -218,7 +218,7 @@ if auth:
     #st.markdown(html_score, unsafe_allow_html=True)
     with st.container():
         # JAUGE + récapitulatif du score moyen des voisins
-        col1, col2, _ = st.columns([1.1, 2, 0.5])
+        col1, _, col2 = st.columns([1,0.5,2])
         with col1:
             #st.plotly_chart(ma_gauge)
             fig_g, clr_score = getgauge(y_proba_defaut_client,score_moy_voisins_test,client_id)
