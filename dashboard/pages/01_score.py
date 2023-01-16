@@ -187,7 +187,13 @@ if auth:
             [[sain, defaut]] = pred_sagemaker['predictions']
             y_proba_sain_clienn, y_proba_defaut_client = (
                 np.rint(sain * 100), np.rint(defaut * 100))
-    else:
+        else:
+            st.error(f"⚠️ aws : **{status_srv.get('EndpointStatus')}**, utiliser l'option **premise**")
+            #y_proba = best_model.predict_proba(data_predict)[:, 1]
+             # Score du client en pourcentage arrondi et nombre entier
+            #y_proba_defaut_client = int(np.rint(y_proba * 100))
+            st.stop()
+    else :
         # predication en local
         y_proba = best_model.predict_proba(data_predict)[:, 1]
         # Score du client en pourcentage arrondi et nombre entier
@@ -216,7 +222,7 @@ if auth:
         with col1:
             #st.plotly_chart(ma_gauge)
             fig_g, clr_score = getgauge(y_proba_defaut_client,score_moy_voisins_test,client_id)
-            st.plotly_chart(fig_g)
+            st.plotly_chart(fig_g,theme=None,use_container_width=True)
         with col2:
             st.write("")
             st.write("")

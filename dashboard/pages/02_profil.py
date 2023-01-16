@@ -28,6 +28,8 @@ warnings.filterwarnings('ignore')
 menu_style()
 header_style()
 
+st.set_option('deprecation.showPyplotGlobalUse', False)
+
 html_legende = """
 
  <div class="cadrelegende">
