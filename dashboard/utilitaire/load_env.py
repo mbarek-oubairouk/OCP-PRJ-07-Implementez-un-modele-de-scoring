@@ -241,7 +241,7 @@ def getgauge(value=0, refval=0,id_client=0):
     plot_bgcolor = "white"
     d = {1:"#2bad4e",2:"#85e043",3:"#orange",4:"#f25829"}
     quadrant_colors = [plot_bgcolor, "#f25829", "orange", "#85e043", "#2bad4e"]
-    quadrant_text = ["", "<b>Très mauvais</b>", "<b>Mauvais</b>","<b>Bon</b>", "<b>Excellent</b>"]
+    quadrant_text = ["", "<b>Danger</b>", "<b>Mauvais</b>","<b>Bon</b>", "<b>Excellent</b>"]
     n_quadrants = len(quadrant_colors) - 1
     current_value = value
     min_value = 0
