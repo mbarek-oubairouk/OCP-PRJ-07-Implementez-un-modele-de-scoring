@@ -25,8 +25,20 @@
 <h4 class="alert-heading">Jeu de données</h4>
 <hr>
 
- [Données](https://s3-eu-west-1.amazonaws.com/static.oc-static.com/prod/courses/files/Parcours_data_scientist/Projet+-+Impl%C3%A9menter+un+mod%C3%A8le+de+scoring/Projet+Mise+en+prod+-+home-credit-default-risk.zip)
- 
+  - [Données](https://s3-eu-west-1.amazonaws.com/static.oc-static.com/prod/courses/files/Parcours_data_scientist/Projet+-+Impl%C3%A9menter+un+mod%C3%A8le+de+scoring/Projet+Mise+en+prod+-+home-credit-default-risk.zip)
+</div>
+
+<div class="alert alert-info" style="width:100%;heigth:500px">  
+<h4 class="alert-heading">Dashboard client</h4>
+<hr>
+
+  - [Dashboard client](https://mbarek-oubairouk-ocp-prj-07-implemente-dashboardhomepage-dz6eyf.streamlit.app/)
+     - <h3 class="alert-heading">schéma d'architecture technique</h3>
+       
+       
+       ![image](https://user-images.githubusercontent.com/119690854/212896478-b12b4ca9-a362-4e78-b68a-add3db2b1961.png)
+
+
 
     
 </div>    
