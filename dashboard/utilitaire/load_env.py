@@ -121,9 +121,13 @@ def local_css(file_name):
 # ====================================================================
 # fonctions pour Sagemaker 
 # ====================================================================
-
+AWS_S3_CREDS = {
+		"aws_access_key_id":st.secrets["AWS_ACCESS_ID"], 
+		"aws_secret_access_key":st.secrets["AWS_SECRET_ACCESS_KEY"]
+	}
 def check_status(app_name,region):
-    sage_client = boto3.client('sagemaker', region_name=region)
+
+    sage_client = boto3.client('sagemaker', region_name=region,**AWS_S3_CREDS)
     try :
        endpoint_description = sage_client.describe_endpoint(EndpointName=app_name)
        endpoint_status = endpoint_description["EndpointStatus"]
@@ -133,7 +137,7 @@ def check_status(app_name,region):
 
 
 def query_endpoint(app_name,region, encoded_tabular_data,target_version=target_version):
-    client = boto3.session.Session().client("sagemaker-runtime", region)
+    client = boto3.session.Session().client("sagemaker-runtime", region,**AWS_S3_CREDS)
     response = client.invoke_endpoint(
         EndpointName=app_name,
         Body=encoded_tabular_data,
@@ -142,8 +146,8 @@ def query_endpoint(app_name,region, encoded_tabular_data,target_version=target_v
     )
     preds = response['Body'].read().decode("ascii")
     preds = json.loads(preds)
-    print("response: {}".format(preds))
-    return preds
+   
+    return preds,response
 
 
 def check_password():

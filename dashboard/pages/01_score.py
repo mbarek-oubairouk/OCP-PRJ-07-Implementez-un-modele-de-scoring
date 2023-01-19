@@ -16,6 +16,7 @@ import matplotlib.pyplot as plt
 import matplotlib.lines as mlines
 import seaborn as sns
 import shap
+import boto3
 
 from utilitaire.load_env import * 
 
@@ -25,7 +26,10 @@ from utilitaire.load_env import *
 
 #st.markdown('<style>body{background-color: #fbfff0}</style>',unsafe_allow_html=True)
 
-
+AWS_S3_CREDS = {
+		"aws_access_key_id":st.secrets["AWS_ACCESS_ID"], 
+		"aws_secret_access_key":st.secrets["AWS_SECRET_ACCESS_KEY"]
+	}
 # ====================================================================
 # Chargement du fichier css
 # ====================================================================
@@ -179,7 +183,7 @@ if auth:
 
         if 'InService' in status_srv:
             encoded_tabular_data = data_predict.to_csv(index=False).encode("utf-8")
-            pred_sagemaker = query_endpoint(app_name, region=region_name,
+            pred_sagemaker,reponse_aws = query_endpoint(app_name, region=region_name,
                                         encoded_tabular_data=encoded_tabular_data,
                                         target_version=target_version)
 
@@ -187,6 +191,8 @@ if auth:
             [[sain, defaut]] = pred_sagemaker['predictions']
             y_proba_sain_clienn, y_proba_defaut_client = (
                 np.rint(sain * 100), np.rint(defaut * 100))
+
+            print(f"preuve aws :{client_id}\n{reponse_aws}, body={pred_sagemaker}")
         else:
             st.error(f"⚠️ aws : **{status_srv.get('EndpointStatus')}**, utiliser l'option **premise**")
             #y_proba = best_model.predict_proba(data_predict)[:, 1]
@@ -298,4 +304,3 @@ if auth:
 
     st.sidebar.subheader('Plus infos')
     check_cli_info = all_infos_clients()
-
