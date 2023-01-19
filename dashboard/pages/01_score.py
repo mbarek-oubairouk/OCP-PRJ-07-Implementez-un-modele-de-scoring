@@ -176,8 +176,12 @@ if auth:
     ############################ Via amazone sagemaker################################################
     if 'aws' in modele_used:
         # status du service
+	AWS_S3_CREDS = {
+        "aws_access_key_id":st.secrets["AWS_ACCESS_ID"], 
+         "aws_secret_access_key":st.secrets["AWS_SECRET_ACCESS_KEY "] 
+        }
      
-        sage_client = boto3.client('sagemaker', region_name=region_name)
+        sage_client = boto3.client('sagemaker', region_name=region_name,**AWS_S3_CREDS)
         endpoint_description = sage_client.describe_endpoint(EndpointName=app_name)
         endpoint_status = endpoint_description["EndpointStatus"]
         st.markdown(endpoint_status)
