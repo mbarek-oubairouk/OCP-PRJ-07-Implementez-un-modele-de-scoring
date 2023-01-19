@@ -16,6 +16,7 @@ import matplotlib.pyplot as plt
 import matplotlib.lines as mlines
 import seaborn as sns
 import shap
+import boto3
 
 from utilitaire.load_env import * 
 
@@ -175,7 +176,7 @@ if auth:
     ############################ Via amazone sagemaker################################################
     if 'aws' in modele_used:
         # status du service
-	import boto3
+     
         sage_client = boto3.client('sagemaker', region_name=region_name)
         endpoint_description = sage_client.describe_endpoint(EndpointName=app_name)
         endpoint_status = endpoint_description["EndpointStatus"]
