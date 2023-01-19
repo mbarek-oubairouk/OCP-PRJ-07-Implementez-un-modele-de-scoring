@@ -28,7 +28,7 @@ from utilitaire.load_env import *
 
 AWS_S3_CREDS = {
 		"aws_access_key_id":st.secrets["AWS_ACCESS_ID"], 
-		"aws_secret_access_key":st.secrets["AWS_SECRET_ACCESS_KEY "]
+		"aws_secret_access_key":st.secrets["AWS_SECRET_ACCESS_KEY"]
 	}
 # ====================================================================
 # Chargement du fichier css
