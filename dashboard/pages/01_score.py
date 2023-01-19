@@ -175,6 +175,11 @@ if auth:
     ############################ Via amazone sagemaker################################################
     if 'aws' in modele_used:
         # status du service
+	import boto3
+        sage_client = boto3.client('sagemaker', region_name=region_name)
+        endpoint_description = sage_client.describe_endpoint(EndpointName=app_name)
+        endpoint_status = endpoint_description["EndpointStatus"]
+        st.markdown(endpoint_status)
         status_srv = check_status(app_name,region_name)
 
         if 'InService' in status_srv:
