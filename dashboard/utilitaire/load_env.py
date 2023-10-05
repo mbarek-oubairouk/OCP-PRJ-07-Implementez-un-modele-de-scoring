@@ -24,8 +24,7 @@ conf.optionxform=str
 conf.read(in_file, encoding='utf-8')
 # charger d'abord default
 exceptions_list = [v.split(',') for k, v in conf.items('DEFAULT') if k == 'exceptions_list'][0]
-exceptions_dic = [v.split(',') for k, v in conf.items(
-    'DEFAULT') if k == 'exceptions_dic'][0]
+exceptions_dic = [v.split(',') for k, v in conf.items('DEFAULT') if k == 'exceptions_dic'][0]
 
 for sec in conf.sections():
     for k, v in conf.items(sec):
