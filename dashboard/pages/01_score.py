@@ -61,7 +61,7 @@ def update_resum():
         df_pred_stat['id']=df_pred_stat['id'].astype(int)
         st.markdown(ex, unsafe_allow_html=True)
         with st.expander("👉",expanded=False):
-	     st.dataframe(df_pred_stat)
+             st.dataframe(df_pred_stat)
 
 if 'histo' in st.session_state:
     list_history = st.session_state['histo']
