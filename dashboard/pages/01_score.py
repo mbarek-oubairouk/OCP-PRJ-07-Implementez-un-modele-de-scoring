@@ -61,7 +61,7 @@ def update_resum():
         with st.expander("👉",expanded=False):
 		df_pred_stat = pd.DataFrame(list_history,columns=['id','status','score','date'])
 		df_pred_stat['id'] = df_pred_stat['id'].astype(int)
-            st.dataframe(df_pred_stat)
+		st.dataframe(df_pred_stat)
 
 if 'histo' in st.session_state:
     list_history = st.session_state['histo']
