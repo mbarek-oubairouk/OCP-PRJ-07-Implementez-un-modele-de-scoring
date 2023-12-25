@@ -24,7 +24,7 @@ import streamlit as st
 from utilitaire.load_env import * 
 
 st.set_page_config(page_title="Prêt à dépenser - Dashboard: conçu pour les chargés de relations clients.", 
-page_icon="💰", layout="wide", theme="light")
+page_icon="💰", layout="wide")
 
 update_menu()
 menu_style()
