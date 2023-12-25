@@ -57,8 +57,8 @@ def update_resum():
        #gd=gd.empty()
     with gd.container():
         ex=update_pred(list_history)
-	df_pred_stat = pd.DataFrame(list_history,columns=['id','status','score','date'])
-	df_pred_stat['id'] = df_pred_stat['id'].astype(int)
+	df_pred_stat=pd.DataFrame(list_history,columns=['id','status','score','date'])
+	df_pred_stat['id']=df_pred_stat['id'].astype(int)
         st.markdown(ex, unsafe_allow_html=True)
         with st.expander("👉",expanded=False):
 	     st.dataframe(df_pred_stat)
