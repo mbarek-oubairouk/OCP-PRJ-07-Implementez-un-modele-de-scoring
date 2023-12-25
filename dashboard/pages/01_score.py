@@ -118,12 +118,12 @@ with aide:
                                        <div class="card-body text-info">
                                               <h5 class="card-title">Le choix du modéles</h5>
                                               <p class="card-text"><p>
-                                              <ul><li><b>premise</b> : pour utiliser le modéle déployé localement dans Streamlit, pas besoin du mot de passe</li>
-                                                  <li><b>cloud aws</b> : pour utiliser le modéle déployé dans aws sagemaker</li></ul>
+                                              <ul><li><b>On-Premise</b> : pour utiliser le modéle déployé localement dans Streamlit, pas besoin du mot de passe</li>
+                                                  <li><b>Cloud aws</b> : pour utiliser le modéle déployé dans aws sagemaker</li></ul>
                                    </div>"""
                         ,unsafe_allow_html=True)
 with login:
-    modele_used = st.radio("Inférence en : 👇",("premise","cloud aws 🔐"),
+    modele_used = st.radio("Inférence en : 👇",("On-Premise","Cloud aws 🔐"),
                          horizontal=True,help="mot de passe nécessaire pour cloud aws",key="auth",index=0)
 if "aws" in modele_used:
     auth = check_password() 
