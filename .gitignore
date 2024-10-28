@@ -1,0 +1,5 @@
+*.bkp
+secrets.toml
+**/mlruns/**
+deploy.py
+utilitaire/__pycache__//*.pyc
